@@ -1,0 +1,2356 @@
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background: #0b1018;
+    color: #ffffff;
+    overflow: hidden;
+}
+
+button,
+input {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   MAIN CONTAINER
+========================================================= */
+
+.container {
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+
+    display: flex;
+
+    background: #101722;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   LEFT SIDEBAR
+   ORIGINAL POSITION / SIZE PRESERVED
+========================================================= */
+
+.sidebar {
+    width: 72px;
+    height: 100vh;
+    height: 100dvh;
+
+    flex-shrink: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    background: #101722;
+
+    border-right: 1px solid #202a39;
+
+    position: relative;
+}
+
+
+/* =========================================================
+   SIDEBAR TOP
+========================================================= */
+
+.sidebar-top {
+    width: 100%;
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.logo {
+    width: 43px;
+    height: 43px;
+
+    margin: 25px auto 18px;
+
+    border-radius: 11px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(
+        145deg,
+        #7357ff,
+        #5437d7
+    );
+
+    color: white;
+
+    font-size: 19px;
+
+    box-shadow:
+        0 6px 20px rgba(92, 66, 235, 0.28);
+}
+
+.logo i {
+    font-size: 19px;
+}
+
+
+/* =========================================================
+   SIDEBAR DIVIDER
+========================================================= */
+
+.sidebar-divider {
+    width: 34px;
+    height: 1px;
+
+    margin: 0 auto 13px;
+
+    background: #242e3d;
+}
+
+
+/* =========================================================
+   SIDEBAR MENU
+========================================================= */
+
+.menu {
+    width: 100%;
+
+    padding: 0 9px;
+
+    list-style: none;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+.menu li {
+    width: 54px;
+    height: 59px;
+
+    margin: 0 auto;
+
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+
+    color: #8994a8;
+
+    font-size: 10px;
+
+    position: relative;
+
+    transition: 0.2s ease;
+
+    user-select: none;
+}
+
+.menu li i {
+    font-size: 17px;
+}
+
+.menu li:hover {
+    color: #ffffff;
+    background: #182131;
+}
+
+.menu li.active {
+    color: #ffffff;
+    background: #192232;
+}
+
+.menu li.active::before {
+    content: "";
+
+    position: absolute;
+
+    left: -9px;
+    top: 50%;
+
+    width: 3px;
+    height: 32px;
+
+    transform: translateY(-50%);
+
+    background: #7255ff;
+
+    border-radius: 0 4px 4px 0;
+}
+
+
+/* =========================================================
+   ACCOUNT AREA
+========================================================= */
+
+.account-area {
+    width: 100%;
+
+    margin-top: auto;
+
+    padding: 15px 0 17px;
+
+    border-top: 1px solid #202a39;
+}
+
+
+/* =========================================================
+   LOGGED OUT
+========================================================= */
+
+#loggedOutAccount {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+.account-button {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 4px;
+
+    color: #8994a8;
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    transition: 0.2s;
+}
+
+.account-button i {
+    font-size: 16px;
+}
+
+.account-button:hover {
+    color: white;
+}
+
+
+/* =========================================================
+   LOGGED IN
+========================================================= */
+
+#loggedInAccount {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+.account-user {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 4px;
+
+    color: #d3d9e5;
+
+    font-size: 9px;
+}
+
+
+/* =========================================================
+   USER AVATAR
+========================================================= */
+
+.user-avatar {
+    width: 38px;
+    height: 38px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #273247;
+
+    color: #aeb9ce;
+
+    position: relative;
+}
+
+.user-avatar::after {
+    content: "";
+
+    position: absolute;
+
+    right: -1px;
+    bottom: 0;
+
+    width: 9px;
+    height: 9px;
+
+    border-radius: 50%;
+
+    background: #19d879;
+
+    border: 2px solid #101722;
+}
+
+.user-avatar i {
+    font-size: 17px;
+}
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+.logout-button {
+    border: none;
+
+    background: transparent;
+
+    color: #707c91;
+
+    display: flex;
+    align-items: center;
+
+    gap: 5px;
+
+    font-size: 9px;
+}
+
+.logout-button:hover {
+    color: #ff7272;
+}
+
+
+/* =========================================================
+   CHAT LIST PANEL
+========================================================= */
+
+.chat-list {
+    width: 207px;
+    height: 100vh;
+    height: 100dvh;
+
+    flex-shrink: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    background: #121a26;
+
+    border-right: 1px solid #273142;
+
+    position: relative;
+    z-index: 2;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   SCREENS
+========================================================= */
+
+.screen {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    min-height: 0;
+}
+
+.hidden-screen {
+    display: none !important;
+}
+
+
+/* =========================================================
+   CHAT LIST HEADER
+========================================================= */
+
+.chat-list-header {
+    height: 96px;
+
+    flex-shrink: 0;
+
+    padding: 0 14px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid #273142;
+}
+
+.chat-title h1 {
+    color: #f5f7fb;
+
+    font-size: 18px;
+
+    font-weight: 600;
+
+    line-height: 1.3;
+}
+
+.chat-title p {
+    margin-top: 4px;
+
+    color: #748095;
+
+    font-size: 9px;
+}
+
+
+/* =========================================================
+   NEW CHAT BUTTON
+========================================================= */
+
+.new-chat-btn {
+    width: 34px;
+    height: 34px;
+
+    flex-shrink: 0;
+
+    border: none;
+
+    border-radius: 8px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(
+        145deg,
+        #7052f5,
+        #583bd7
+    );
+
+    color: white;
+
+    font-size: 13px;
+
+    box-shadow:
+        0 5px 14px rgba(98, 68, 235, 0.2);
+
+    transition: 0.2s;
+}
+
+.new-chat-btn:hover {
+    transform: translateY(-1px);
+
+    background: #8064ff;
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+.search-box {
+    height: 38px;
+
+    flex-shrink: 0;
+
+    margin: 11px 13px 0;
+
+    padding: 0 11px;
+
+    display: flex;
+    align-items: center;
+
+    background: #1b2535;
+
+    border: 1px solid #253145;
+
+    border-radius: 8px;
+
+    transition: 0.2s;
+}
+
+.search-box:focus-within {
+    border-color: #6047e8;
+
+    background: #1d2839;
+}
+
+.search-box i {
+    color: #8290a6;
+
+    font-size: 12px;
+}
+
+.search-box input {
+    width: 100%;
+
+    min-width: 0;
+
+    margin-left: 8px;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    color: white;
+
+    font-size: 10px;
+}
+
+.search-box input::placeholder {
+    color: #66738a;
+}
+
+
+/* =========================================================
+   FRIENDS LIST
+========================================================= */
+
+#friendsList {
+    flex: 1;
+
+    min-height: 0;
+
+    overflow-y: auto;
+}
+
+
+/* =========================================================
+   EMPTY FRIEND STATE
+========================================================= */
+
+.empty-state {
+    padding: 64px 13px 20px;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   EMPTY FRIEND ICON
+========================================================= */
+
+.empty-icon {
+    width: 86px;
+    height: 86px;
+
+    margin: 0 auto 22px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle,
+            #273246 0%,
+            #1c2737 60%,
+            transparent 61%
+        );
+
+    position: relative;
+}
+
+.empty-icon::before,
+.empty-icon::after {
+    content: "✦";
+
+    position: absolute;
+
+    color: #49566c;
+
+    font-size: 11px;
+}
+
+.empty-icon::before {
+    left: -5px;
+    top: 10px;
+}
+
+.empty-icon::after {
+    right: -4px;
+    top: 25px;
+}
+
+.empty-icon i {
+    color: #738097;
+
+    font-size: 31px;
+}
+
+
+/* =========================================================
+   EMPTY FRIEND TEXT
+========================================================= */
+
+.empty-state h3 {
+    color: #edf0f5;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    margin-bottom: 5px;
+}
+
+.empty-state p {
+    color: #718097;
+
+    font-size: 9px;
+
+    line-height: 1.5;
+
+    margin-bottom: 14px;
+}
+
+
+/* =========================================================
+   ADD FRIEND
+========================================================= */
+
+#addFriendBtn {
+    border: none;
+
+    padding: 8px 14px;
+
+    border-radius: 6px;
+
+    background: linear-gradient(
+        145deg,
+        #7354fa,
+        #5a3bd6
+    );
+
+    color: white;
+
+    font-size: 10px;
+
+    transition: 0.2s;
+}
+
+#addFriendBtn i {
+    margin-right: 5px;
+}
+
+#addFriendBtn:hover {
+    transform: translateY(-1px);
+
+    background: #8064ff;
+}
+
+
+/* =========================================================
+   FRIEND / CHAT PERSON
+========================================================= */
+
+.person {
+    padding: 10px 13px;
+
+    display: flex;
+    align-items: center;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.person:hover {
+    background: #192333;
+}
+
+.person.active {
+    background: #202b3d;
+}
+
+.person img {
+    width: 39px;
+    height: 39px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+}
+
+.details {
+    flex: 1;
+
+    min-width: 0;
+
+    margin-left: 9px;
+}
+
+.details h3 {
+    color: #eef1f6;
+
+    font-size: 11px;
+
+    font-weight: 500;
+}
+
+.details p {
+    margin-top: 2px;
+
+    color: #718096;
+
+    font-size: 9px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   PANEL HEADER
+========================================================= */
+
+.panel-header {
+    min-height: 96px;
+
+    flex-shrink: 0;
+
+    padding: 0 14px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid #273142;
+}
+
+.panel-header h1 {
+    color: #f5f7fb;
+
+    font-size: 18px;
+
+    font-weight: 600;
+}
+
+.panel-header p {
+    color: #748095;
+
+    font-size: 9px;
+
+    margin-top: 4px;
+}
+
+
+/* =========================================================
+   PANEL ACTION BUTTON
+========================================================= */
+
+.panel-action-btn {
+    width: 34px;
+    height: 34px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(
+        145deg,
+        #7052f5,
+        #583bd7
+    );
+
+    color: white;
+
+    font-size: 13px;
+
+    transition: 0.2s;
+}
+
+.panel-action-btn:hover {
+    transform: translateY(-1px);
+
+    background: #8064ff;
+}
+
+
+/* =========================================================
+   PANEL SEARCH
+========================================================= */
+
+.panel-search {
+    height: 38px;
+
+    flex-shrink: 0;
+
+    margin: 11px 13px 0;
+
+    padding: 0 11px;
+
+    display: flex;
+    align-items: center;
+
+    background: #1b2535;
+
+    border: 1px solid #253145;
+
+    border-radius: 8px;
+}
+
+.panel-search:focus-within {
+    border-color: #6047e8;
+}
+
+.panel-search i {
+    color: #8290a6;
+
+    font-size: 12px;
+}
+
+.panel-search input {
+    width: 100%;
+
+    min-width: 0;
+
+    margin-left: 8px;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    color: white;
+
+    font-size: 10px;
+}
+
+.panel-search input::placeholder {
+    color: #66738a;
+}
+
+
+/* =========================================================
+   FRIEND TABS
+========================================================= */
+
+.friends-tabs {
+    display: flex;
+
+    gap: 4px;
+
+    padding: 12px 13px 5px;
+}
+
+.friend-tab {
+    flex: 1;
+
+    border: none;
+
+    border-radius: 6px;
+
+    padding: 6px 3px;
+
+    background: transparent;
+
+    color: #718097;
+
+    font-size: 9px;
+
+    transition: 0.2s;
+}
+
+.friend-tab:hover {
+    background: #1a2535;
+
+    color: white;
+}
+
+.friend-tab.active {
+    background: #263149;
+
+    color: white;
+}
+
+
+/* =========================================================
+   FRIENDS / GROUPS CONTENT
+========================================================= */
+
+.friends-content,
+.groups-content {
+    flex: 1;
+
+    min-height: 0;
+
+    overflow-y: auto;
+}
+
+
+/* =========================================================
+   FEATURE EMPTY
+========================================================= */
+
+.feature-empty {
+    padding: 50px 18px;
+
+    text-align: center;
+}
+
+.feature-empty-icon {
+    width: 74px;
+    height: 74px;
+
+    margin: 0 auto 18px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #1d293a;
+
+    color: #75839a;
+
+    font-size: 27px;
+}
+
+.feature-empty h2 {
+    color: #edf0f5;
+
+    font-size: 13px;
+
+    margin-bottom: 6px;
+}
+
+.feature-empty p {
+    color: #718097;
+
+    font-size: 9px;
+
+    line-height: 1.5;
+
+    margin-bottom: 16px;
+}
+
+
+/* =========================================================
+   PRIMARY BUTTON
+========================================================= */
+
+.primary-button {
+    border: none;
+
+    padding: 8px 13px;
+
+    border-radius: 6px;
+
+    background: linear-gradient(
+        145deg,
+        #7354fa,
+        #5a3bd6
+    );
+
+    color: white;
+
+    font-size: 9px;
+
+    transition: 0.2s;
+}
+
+.primary-button i {
+    margin-right: 5px;
+}
+
+.primary-button:hover {
+    transform: translateY(-1px);
+
+    background: #8064ff;
+}
+
+
+/* =========================================================
+   CREATED GROUP
+========================================================= */
+
+.created-group {
+    margin: 12px;
+
+    padding: 10px;
+
+    border-radius: 8px;
+
+    background: #1b2535;
+
+    display: flex;
+    align-items: center;
+
+    transition: 0.2s;
+}
+
+.created-group:hover {
+    background: #202c3e;
+}
+
+.created-group-icon {
+    width: 38px;
+    height: 38px;
+
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #2a3150;
+
+    color: #8e79ff;
+
+    font-size: 14px;
+}
+
+.created-group-info {
+    margin-left: 9px;
+
+    min-width: 0;
+}
+
+.created-group-info strong {
+    display: block;
+
+    color: #edf0f5;
+
+    font-size: 10px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+.created-group-info small {
+    display: block;
+
+    margin-top: 2px;
+
+    color: #718097;
+
+    font-size: 8px;
+}
+
+
+/* =========================================================
+   SETTINGS CONTENT
+========================================================= */
+
+.settings-content {
+    flex: 1;
+
+    min-height: 0;
+
+    overflow-y: auto;
+
+    padding: 14px;
+}
+
+
+/* =========================================================
+   SETTINGS SECTION
+========================================================= */
+
+.settings-section {
+    margin-bottom: 20px;
+}
+
+.settings-section-title {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    margin-bottom: 8px;
+
+    color: #8d99ad;
+
+    font-size: 9px;
+
+    font-weight: 500;
+
+    text-transform: uppercase;
+}
+
+.settings-section-title i {
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   SETTINGS PROFILE
+========================================================= */
+
+.settings-card {
+    padding: 12px;
+
+    border-radius: 9px;
+
+    background: #1b2535;
+
+    display: flex;
+    align-items: center;
+}
+
+.settings-profile-avatar {
+    width: 40px;
+    height: 40px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #273247;
+
+    color: #aeb9ce;
+
+    font-size: 16px;
+}
+
+.settings-profile-info {
+    margin-left: 10px;
+}
+
+.settings-profile-info strong {
+    display: block;
+
+    color: #edf0f5;
+
+    font-size: 10px;
+}
+
+.settings-profile-info small {
+    display: block;
+
+    margin-top: 2px;
+
+    color: #718097;
+
+    font-size: 8px;
+}
+
+
+/* =========================================================
+   SETTINGS ROW
+========================================================= */
+
+.setting-row {
+    min-height: 58px;
+
+    padding: 10px 12px;
+
+    border-radius: 9px;
+
+    background: #1b2535;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.setting-info {
+    min-width: 0;
+
+    padding-right: 8px;
+}
+
+.setting-info strong {
+    display: block;
+
+    color: #e9edf4;
+
+    font-size: 9px;
+
+    font-weight: 500;
+}
+
+.setting-info small {
+    display: block;
+
+    color: #718097;
+
+    font-size: 7px;
+
+    margin-top: 2px;
+}
+
+
+/* =========================================================
+   SWITCH
+========================================================= */
+
+.switch {
+    position: relative;
+
+    display: inline-block;
+
+    width: 32px;
+    height: 18px;
+
+    flex-shrink: 0;
+}
+
+.switch input {
+    opacity: 0;
+
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: 20px;
+
+    background: #313c4e;
+
+    transition: 0.2s;
+
+    cursor: pointer;
+}
+
+.slider::before {
+    content: "";
+
+    position: absolute;
+
+    width: 12px;
+    height: 12px;
+
+    left: 3px;
+    top: 3px;
+
+    border-radius: 50%;
+
+    background: #aab4c5;
+
+    transition: 0.2s;
+}
+
+.switch input:checked + .slider {
+    background: #6547e7;
+}
+
+.switch input:checked + .slider::before {
+    transform: translateX(14px);
+
+    background: white;
+}
+
+
+/* =========================================================
+   SETTINGS BUTTON
+========================================================= */
+
+.settings-button {
+    width: 100%;
+
+    padding: 11px 12px;
+
+    border: 1px solid #293447;
+
+    border-radius: 8px;
+
+    background: #1b2535;
+
+    color: #dce2eb;
+
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    font-size: 9px;
+
+    text-align: left;
+
+    transition: 0.2s;
+}
+
+.settings-button:hover {
+    background: #242f41;
+
+    color: #ff7272;
+}
+
+.settings-button i {
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   CHAT WINDOW
+========================================================= */
+
+.chat-window {
+    flex: 1;
+
+    min-width: 0;
+    min-height: 0;
+
+    height: 100vh;
+    height: 100dvh;
+
+    display: flex;
+    flex-direction: column;
+
+    background: #111924;
+
+    position: relative;
+    z-index: 1;
+}
+
+
+/* =========================================================
+   CHAT HEADER
+========================================================= */
+
+.chat-header {
+    height: 96px;
+
+    flex-shrink: 0;
+
+    padding: 0 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: #121a26;
+
+    border-bottom: 1px solid #273142;
+}
+
+
+/* =========================================================
+   MOBILE BACK BUTTON
+========================================================= */
+
+.mobile-back-btn {
+    display: none;
+
+    width: 38px;
+    height: 38px;
+
+    margin-right: 8px;
+
+    flex-shrink: 0;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: transparent;
+
+    color: #aab5c7;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 16px;
+}
+
+.mobile-back-btn:hover {
+    background: #1d2736;
+    color: white;
+}
+
+
+/* =========================================================
+   CHAT USER
+========================================================= */
+
+.chat-user {
+    min-width: 0;
+
+    display: flex;
+    align-items: center;
+}
+
+.chat-avatar {
+    width: 46px;
+    height: 46px;
+
+    margin-right: 12px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #273247;
+
+    color: #8290a7;
+
+    position: relative;
+}
+
+.chat-avatar i {
+    font-size: 21px;
+}
+
+.online-dot {
+    position: absolute;
+
+    width: 10px;
+    height: 10px;
+
+    right: 0;
+    bottom: 1px;
+
+    border-radius: 50%;
+
+    background: #16d879;
+
+    border: 2px solid #121a26;
+}
+
+
+/* =========================================================
+   CHAT USER INFO
+========================================================= */
+
+.chat-user-info {
+    min-width: 0;
+}
+
+.chat-user-info h3 {
+    color: #f4f6fa;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    line-height: 1.3;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+.chat-user-info small {
+    display: flex;
+    align-items: center;
+
+    gap: 5px;
+
+    color: #79869a;
+
+    font-size: 9px;
+
+    margin-top: 2px;
+}
+
+.chat-user-info small::before {
+    content: "";
+
+    width: 6px;
+    height: 6px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: #596579;
+}
+
+
+/* =========================================================
+   HEADER ACTIONS
+========================================================= */
+
+.header-actions {
+    display: flex;
+    align-items: center;
+
+    gap: 3px;
+
+    flex-shrink: 0;
+}
+
+.header-btn {
+    width: 36px;
+    height: 36px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: transparent;
+
+    color: #9aa6b9;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 14px;
+
+    transition: 0.2s;
+}
+
+.header-btn:hover {
+    background: #1d2736;
+
+    color: white;
+}
+
+
+/* =========================================================
+   MESSAGES
+========================================================= */
+
+.messages {
+    flex: 1;
+
+    min-height: 0;
+
+    overflow-y: auto;
+
+    padding: 25px;
+
+    display: flex;
+    flex-direction: column;
+
+    background: #111924;
+
+    overscroll-behavior: contain;
+}
+
+
+/* =========================================================
+   EMPTY CHAT
+========================================================= */
+
+.empty-chat {
+    margin: auto;
+
+    text-align: center;
+
+    position: relative;
+
+    padding: 20px;
+}
+
+
+/* =========================================================
+   EMPTY CHAT ICON
+========================================================= */
+
+.empty-chat-icon {
+    width: 105px;
+    height: 105px;
+
+    margin: 0 auto 25px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle,
+            #293548 0%,
+            #1b2737 57%,
+            transparent 58%
+        );
+
+    position: relative;
+}
+
+.empty-chat-icon::before,
+.empty-chat-icon::after {
+    content: "✦";
+
+    position: absolute;
+
+    color: #536078;
+
+    font-size: 13px;
+}
+
+.empty-chat-icon::before {
+    left: -2px;
+    top: 10px;
+}
+
+.empty-chat-icon::after {
+    right: -1px;
+    top: 22px;
+}
+
+.empty-chat-icon i {
+    color: #748197;
+
+    font-size: 38px;
+}
+
+
+/* =========================================================
+   EMPTY CHAT TEXT
+========================================================= */
+
+.empty-chat h2 {
+    color: #edf0f5;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    margin-bottom: 5px;
+}
+
+.empty-chat p {
+    color: #7a879b;
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   MESSAGE BUBBLES
+========================================================= */
+
+.message {
+    max-width: 65%;
+
+    padding: 10px 13px;
+
+    margin-bottom: 8px;
+
+    color: white;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+
+    overflow-wrap: anywhere;
+}
+
+.message.left {
+    align-self: flex-start;
+
+    background: #202b3c;
+
+    border-radius: 12px 12px 12px 3px;
+}
+
+.message.right {
+    align-self: flex-end;
+
+    background: #6949ee;
+
+    border-radius: 12px 12px 3px 12px;
+}
+
+.message p {
+    margin: 0;
+}
+
+.message span {
+    display: block;
+
+    margin-top: 4px;
+
+    color: rgba(255, 255, 255, 0.55);
+
+    font-size: 8px;
+
+    text-align: right;
+}
+
+
+/* =========================================================
+   MESSAGE INPUT BAR
+========================================================= */
+
+.chat-input {
+    min-height: 76px;
+
+    flex-shrink: 0;
+
+    padding: 13px 20px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    background: #121a26;
+
+    border-top: 1px solid #273142;
+
+    padding-bottom:
+        max(13px, env(safe-area-inset-bottom));
+}
+
+
+/* =========================================================
+   INPUT ICON BUTTON
+========================================================= */
+
+.icon-btn {
+    width: 40px;
+    height: 40px;
+
+    flex-shrink: 0;
+
+    border: none;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #1c2737;
+
+    color: #8793a8;
+
+    font-size: 15px;
+
+    transition: 0.2s;
+}
+
+.icon-btn:hover:not(:disabled) {
+    background: #263246;
+
+    color: white;
+}
+
+
+/* =========================================================
+   MESSAGE INPUT
+========================================================= */
+
+.chat-input input {
+    flex: 1;
+
+    min-width: 0;
+
+    height: 43px;
+
+    padding: 0 15px;
+
+    border: 1px solid #222e40;
+
+    outline: none;
+
+    border-radius: 23px;
+
+    background: #1b2637;
+
+    color: white;
+
+    font-size: 11px;
+
+    transition: 0.2s;
+}
+
+.chat-input input::placeholder {
+    color: #707e93;
+}
+
+.chat-input input:focus {
+    border-color: #3b485d;
+
+    background: #1e293a;
+}
+
+.chat-input input:disabled {
+    cursor: not-allowed;
+
+    opacity: 1;
+}
+
+
+/* =========================================================
+   SEND BUTTON
+========================================================= */
+
+.send-btn {
+    width: 43px;
+    height: 43px;
+
+    flex-shrink: 0;
+
+    border: none;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(
+        145deg,
+        #7354fa,
+        #593bd8
+    );
+
+    color: white;
+
+    font-size: 15px;
+
+    box-shadow:
+        0 5px 15px rgba(96, 66, 226, 0.25);
+
+    transition: 0.2s;
+}
+
+.send-btn:hover:not(:disabled) {
+    transform: scale(1.05);
+
+    background: #8064ff;
+}
+
+.send-btn:disabled {
+    opacity: 1;
+
+    cursor: not-allowed;
+
+    background: #6748e6;
+}
+
+
+/* =========================================================
+   SCROLLBARS
+========================================================= */
+
+#friendsList::-webkit-scrollbar,
+.messages::-webkit-scrollbar,
+.friends-content::-webkit-scrollbar,
+.groups-content::-webkit-scrollbar,
+.settings-content::-webkit-scrollbar {
+    width: 4px;
+}
+
+#friendsList::-webkit-scrollbar-track,
+.messages::-webkit-scrollbar-track,
+.friends-content::-webkit-scrollbar-track,
+.groups-content::-webkit-scrollbar-track,
+.settings-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#friendsList::-webkit-scrollbar-thumb,
+.messages::-webkit-scrollbar-thumb,
+.friends-content::-webkit-scrollbar-thumb,
+.groups-content::-webkit-scrollbar-thumb,
+.settings-content::-webkit-scrollbar-thumb {
+    background: #303b4e;
+
+    border-radius: 10px;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .sidebar {
+        width: 65px;
+    }
+
+    .chat-list {
+        width: 250px;
+    }
+
+    .chat-header {
+        padding: 0 16px;
+    }
+
+    .messages {
+        padding: 18px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL TABLETS / PHONES
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .sidebar {
+        display: none;
+    }
+
+    .chat-list {
+        width: 100%;
+        height: 100%;
+        border-right: none;
+    }
+
+    .chat-window {
+        width: 100%;
+        height: 100%;
+
+        display: none;
+
+        flex: 1;
+    }
+
+    .chat-window.mobile-active {
+        display: flex;
+    }
+
+    .chat-list.mobile-hidden {
+        display: none;
+    }
+
+    .mobile-back-btn {
+        display: flex;
+    }
+
+    .chat-header {
+        height: 70px;
+
+        min-height: 70px;
+
+        padding:
+            0 10px
+            0 8px;
+    }
+
+    .chat-avatar {
+        width: 40px;
+        height: 40px;
+
+        margin-right: 9px;
+    }
+
+    .chat-avatar i {
+        font-size: 18px;
+    }
+
+    .chat-user-info h3 {
+        font-size: 12px;
+    }
+
+    .chat-user-info small {
+        font-size: 8px;
+    }
+
+    .header-actions {
+        gap: 0;
+    }
+
+    .header-btn {
+        width: 34px;
+        height: 34px;
+
+        font-size: 13px;
+    }
+
+    .messages {
+        padding: 15px;
+    }
+
+    .empty-chat-icon {
+        width: 90px;
+        height: 90px;
+
+        margin-bottom: 20px;
+    }
+
+    .empty-chat-icon i {
+        font-size: 32px;
+    }
+
+    .empty-chat h2 {
+        font-size: 14px;
+    }
+
+    .empty-chat p {
+        font-size: 10px;
+    }
+
+    .chat-input {
+        min-height: 68px;
+
+        padding:
+            8px
+            10px
+            max(8px, env(safe-area-inset-bottom));
+
+        gap: 6px;
+    }
+
+    .icon-btn {
+        width: 38px;
+        height: 38px;
+
+        font-size: 14px;
+    }
+
+    .send-btn {
+        width: 40px;
+        height: 40px;
+
+        font-size: 14px;
+    }
+
+    .chat-input input {
+        height: 40px;
+
+        padding: 0 13px;
+
+        font-size: 12px;
+    }
+
+    .message {
+        max-width: 82%;
+
+        font-size: 12px;
+    }
+
+    /* PANEL MOBILE */
+
+    .panel-header {
+        min-height: 82px;
+
+        padding: 0 14px;
+    }
+
+    .panel-header h1 {
+        font-size: 17px;
+    }
+
+    .panel-header p {
+        font-size: 8px;
+    }
+
+    .panel-action-btn {
+        width: 32px;
+        height: 32px;
+    }
+
+    .panel-search {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .feature-empty {
+        padding-top: 45px;
+    }
+
+    .settings-content {
+        padding: 12px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media (max-width: 400px) {
+
+    .chat-list-header {
+        height: 82px;
+
+        padding: 0 12px;
+    }
+
+    .chat-title h1 {
+        font-size: 17px;
+    }
+
+    .chat-title p {
+        font-size: 8px;
+    }
+
+    .new-chat-btn {
+        width: 32px;
+        height: 32px;
+    }
+
+    .search-box {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .empty-state {
+        padding-top: 50px;
+    }
+
+    .empty-icon {
+        width: 75px;
+        height: 75px;
+    }
+
+    .empty-icon i {
+        font-size: 27px;
+    }
+
+    .empty-state h3 {
+        font-size: 12px;
+    }
+
+    .empty-state p {
+        font-size: 8px;
+    }
+
+    .chat-header {
+        padding-right: 5px;
+    }
+
+    .header-btn {
+        width: 31px;
+        height: 31px;
+    }
+
+    .chat-input .icon-btn {
+        width: 35px;
+        height: 35px;
+    }
+
+    .chat-input .send-btn {
+        width: 38px;
+        height: 38px;
+    }
+
+    .panel-header {
+        min-height: 78px;
+    }
+
+    .friends-tabs {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .settings-section-title {
+        font-size: 8px;
+    }
+
+}
+
+
+/* =========================================================
+   LANDSCAPE PHONES
+========================================================= */
+
+@media (
+    max-width: 700px
+) and (
+    orientation: landscape
+) {
+
+    .chat-header {
+        height: 60px;
+        min-height: 60px;
+    }
+
+    .chat-input {
+        min-height: 58px;
+
+        padding-top: 6px;
+    }
+
+    .chat-input input {
+        height: 38px;
+    }
+
+    .messages {
+        padding: 10px 15px;
+    }
+
+    .panel-header {
+        min-height: 60px;
+    }
+
+    .feature-empty {
+        padding-top: 20px;
+    }
+
+}
+
+
+/* =========================================================
+   IPAD / TABLET TOUCH IMPROVEMENTS
+========================================================= */
+
+@media (pointer: coarse) {
+
+    button {
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .header-btn,
+    .icon-btn,
+    .send-btn,
+    .new-chat-btn,
+    .mobile-back-btn,
+    .panel-action-btn,
+    .friend-tab,
+    .primary-button {
+        touch-action: manipulation;
+    }
+
+}
+
+
+/* =========================================================
+   LIGHT MODE
+   ONLY USED WHEN SETTINGS TOGGLE IS TURNED OFF
+========================================================= */
+
+body.light-mode {
+    background: #eef1f6;
+}
+
+body.light-mode .container {
+    background: #eef1f6;
+}
+
+body.light-mode .sidebar {
+    background: #f7f8fb;
+    border-right-color: #dfe3eb;
+}
+
+body.light-mode .chat-list {
+    background: #ffffff;
+    border-right-color: #dfe3eb;
+}
+
+body.light-mode .chat-window,
+body.light-mode .messages {
+    background: #f4f6fa;
+}
+
+body.light-mode .chat-header,
+body.light-mode .chat-input {
+    background: #ffffff;
+    border-color: #dfe3eb;
+}
+
+body.light-mode .chat-title h1,
+body.light-mode .panel-header h1,
+body.light-mode .empty-state h3,
+body.light-mode .feature-empty h2,
+body.light-mode .chat-user-info h3,
+body.light-mode .empty-chat h2,
+body.light-mode .settings-profile-info strong,
+body.light-mode .setting-info strong {
+    color: #18202d;
+}
+
+body.light-mode .search-box,
+body.light-mode .panel-search,
+body.light-mode .settings-card,
+body.light-mode .setting-row,
+body.light-mode .settings-button,
+body.light-mode .created-group {
+    background: #f0f3f8;
+    border-color: #d9dfe9;
+}
+
+body.light-mode .search-box input,
+body.light-mode .panel-search input,
+body.light-mode .chat-input input {
+    color: #18202d;
+}
+
+body.light-mode .chat-input input {
+    background: #f0f3f8;
+}
+
+body.light-mode .menu li {
+    color: #667085;
+}
+
+body.light-mode .menu li:hover,
+body.light-mode .menu li.active {
+    background: #e9edf5;
+    color: #18202d;
+}
+
+body.light-mode .person:hover {
+    background: #eef1f6;
+}
+
+body.light-mode .person.active {
+    background: #e5eaf3;
+}
+
+body.light-mode .details h3 {
+    color: #18202d;
+}
+
+body.light-mode .chat-user-info small {
+    color: #667085;
+}
+
+body.light-mode .header-btn {
+    color: #667085;
+}
+
+body.light-mode .header-btn:hover {
+    background: #edf0f5;
+    color: #18202d;
+}

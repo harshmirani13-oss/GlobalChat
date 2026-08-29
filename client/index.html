@@ -1,0 +1,1426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    >
+
+    <title>Chatz</title>
+
+    <!-- GOOGLE FONT -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- FONT AWESOME -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    >
+
+    <!-- YOUR CSS -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+    <!-- =====================================================
+         LEFT SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-top">
+
+            <!-- LOGO -->
+            <div class="logo">
+                <i class="fa-solid fa-comment"></i>
+            </div>
+
+            <div class="sidebar-divider"></div>
+
+            <!-- MENU -->
+            <ul class="menu">
+
+                <li
+                    class="active"
+                    data-screen="chats"
+                    title="Chats"
+                >
+                    <i class="fa-regular fa-message"></i>
+                    <span>Chats</span>
+                </li>
+
+                <li
+                    data-screen="friends"
+                    title="Friends"
+                >
+                    <i class="fa-solid fa-user-plus"></i>
+                    <span>Friends</span>
+                </li>
+
+                <li
+                    data-screen="groups"
+                    title="Groups"
+                >
+                    <i class="fa-solid fa-users"></i>
+                    <span>Groups</span>
+                </li>
+
+                <li
+                    data-screen="settings"
+                    title="Settings"
+                >
+                    <i class="fa-solid fa-gear"></i>
+                    <span>Settings</span>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- =================================================
+             ACCOUNT AREA
+        ================================================== -->
+
+        <div class="account-area">
+
+            <!-- LOGGED OUT -->
+
+            <div id="loggedOutAccount">
+
+                <a
+                    href="login.html"
+                    class="account-button"
+                >
+                    <i class="fa-solid fa-right-to-bracket"></i>
+                    <span>Login</span>
+                </a>
+
+                <a
+                    href="register.html"
+                    class="account-button"
+                >
+                    <i class="fa-solid fa-user-plus"></i>
+                    <span>Register</span>
+                </a>
+
+            </div>
+
+
+            <!-- LOGGED IN -->
+
+            <div
+                id="loggedInAccount"
+                style="display: none;"
+            >
+
+                <div class="account-user">
+
+                    <div class="user-avatar">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+
+                    <span id="usernameDisplay">
+                        User
+                    </span>
+
+                </div>
+
+                <button
+                    id="logoutButton"
+                    class="logout-button"
+                >
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Logout</span>
+                </button>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =====================================================
+         CHAT LIST / MAIN SIDE PANEL
+    ====================================================== -->
+
+    <section class="chat-list" id="chatList">
+
+
+        <!-- =================================================
+             CHATS SCREEN
+        ================================================== -->
+
+        <div
+            class="screen"
+            id="chatsScreen"
+        >
+
+            <div class="chat-list-header">
+
+                <div class="chat-title">
+
+                    <h1>Chats</h1>
+
+                    <p>Your conversations</p>
+
+                </div>
+
+                <button
+                    class="new-chat-btn"
+                    id="newChatBtn"
+                    title="Add Friend"
+                >
+                    <i class="fa-solid fa-user-plus"></i>
+                </button>
+
+            </div>
+
+
+            <div class="search-box">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="text"
+                    id="userSearch"
+                    placeholder="Search users..."
+                    autocomplete="off"
+                >
+
+            </div>
+
+
+            <div id="friendsList">
+
+                <div class="empty-state">
+
+                    <div class="empty-icon">
+                        <i class="fa-solid fa-user-group"></i>
+                    </div>
+
+                    <h3>
+                        No conversations yet
+                    </h3>
+
+                    <p>
+                        Add friends to start chatting
+                    </p>
+
+                    <button id="addFriendBtn">
+
+                        <i class="fa-solid fa-user-plus"></i>
+
+                        Add Friend
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             FRIENDS SCREEN
+        ================================================== -->
+
+        <div
+            class="screen hidden-screen"
+            id="friendsScreen"
+        >
+
+            <div class="panel-header">
+
+                <div>
+                    <h1>Friends</h1>
+                    <p>Manage your friends</p>
+                </div>
+
+                <button
+                    class="panel-action-btn"
+                    id="addFriendScreenBtn"
+                    title="Add Friend"
+                >
+                    <i class="fa-solid fa-user-plus"></i>
+                </button>
+
+            </div>
+
+
+            <div class="panel-search">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="text"
+                    id="friendSearch"
+                    placeholder="Search friends..."
+                    autocomplete="off"
+                >
+
+            </div>
+
+
+            <div class="friends-tabs">
+
+                <button
+                    class="friend-tab active"
+                    data-tab="all"
+                >
+                    All
+                </button>
+
+                <button
+                    class="friend-tab"
+                    data-tab="online"
+                >
+                    Online
+                </button>
+
+                <button
+                    class="friend-tab"
+                    data-tab="requests"
+                >
+                    Requests
+                </button>
+
+            </div>
+
+
+            <div
+                class="friends-content"
+                id="friendsContent"
+            >
+
+                <div class="feature-empty">
+
+                    <div class="feature-empty-icon">
+                        <i class="fa-solid fa-user-group"></i>
+                    </div>
+
+                    <h2>No friends yet</h2>
+
+                    <p>
+                        Find people and send them a friend request.
+                    </p>
+
+                    <button
+                        class="primary-button"
+                        id="findFriendsBtn"
+                    >
+                        <i class="fa-solid fa-user-plus"></i>
+                        Find Friends
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             GROUPS SCREEN
+        ================================================== -->
+
+        <div
+            class="screen hidden-screen"
+            id="groupsScreen"
+        >
+
+            <div class="panel-header">
+
+                <div>
+                    <h1>Groups</h1>
+                    <p>Your group conversations</p>
+                </div>
+
+                <button
+                    class="panel-action-btn"
+                    id="createGroupBtn"
+                    title="Create Group"
+                >
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+
+            </div>
+
+
+            <div class="panel-search">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="text"
+                    id="groupSearch"
+                    placeholder="Search groups..."
+                    autocomplete="off"
+                >
+
+            </div>
+
+
+            <div
+                class="groups-content"
+                id="groupsContent"
+            >
+
+                <div class="feature-empty">
+
+                    <div class="feature-empty-icon">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+
+                    <h2>No groups yet</h2>
+
+                    <p>
+                        Create a group and start chatting together.
+                    </p>
+
+                    <button
+                        class="primary-button"
+                        id="createGroupEmptyBtn"
+                    >
+                        <i class="fa-solid fa-plus"></i>
+                        Create Group
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             SETTINGS SCREEN
+        ================================================== -->
+
+        <div
+            class="screen hidden-screen"
+            id="settingsScreen"
+        >
+
+            <div class="panel-header">
+
+                <div>
+                    <h1>Settings</h1>
+                    <p>Customize your account</p>
+                </div>
+
+            </div>
+
+
+            <div class="settings-content">
+
+
+                <!-- PROFILE -->
+
+                <div class="settings-section">
+
+                    <div class="settings-section-title">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Profile</span>
+                    </div>
+
+                    <div class="settings-card">
+
+                        <div class="settings-profile-avatar">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+
+                        <div class="settings-profile-info">
+
+                            <strong id="settingsUsername">
+                                User
+                            </strong>
+
+                            <small>
+                                Your account
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- APPEARANCE -->
+
+                <div class="settings-section">
+
+                    <div class="settings-section-title">
+                        <i class="fa-solid fa-palette"></i>
+                        <span>Appearance</span>
+                    </div>
+
+
+                    <div class="setting-row">
+
+                        <div class="setting-info">
+
+                            <strong>Dark Mode</strong>
+
+                            <small>
+                                Use the dark interface
+                            </small>
+
+                        </div>
+
+                        <label class="switch">
+
+                            <input
+                                type="checkbox"
+                                id="darkModeToggle"
+                                checked
+                            >
+
+                            <span class="slider"></span>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <!-- NOTIFICATIONS -->
+
+                <div class="settings-section">
+
+                    <div class="settings-section-title">
+                        <i class="fa-solid fa-bell"></i>
+                        <span>Notifications</span>
+                    </div>
+
+
+                    <div class="setting-row">
+
+                        <div class="setting-info">
+
+                            <strong>Message Notifications</strong>
+
+                            <small>
+                                Receive notifications for messages
+                            </small>
+
+                        </div>
+
+                        <label class="switch">
+
+                            <input
+                                type="checkbox"
+                                id="notificationToggle"
+                                checked
+                            >
+
+                            <span class="slider"></span>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ACCOUNT -->
+
+                <div class="settings-section">
+
+                    <div class="settings-section-title">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <span>Account</span>
+                    </div>
+
+
+                    <button
+                        class="settings-button"
+                        id="logoutSettingsBtn"
+                    >
+
+                        <i class="fa-solid fa-right-from-bracket"></i>
+
+                        <span>Log Out</span>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CHAT WINDOW
+    ====================================================== -->
+
+    <main
+        class="chat-window"
+        id="chatWindow"
+    >
+
+
+        <!-- CHAT HEADER -->
+
+        <header class="chat-header">
+
+            <button
+                class="mobile-back-btn"
+                id="mobileBackBtn"
+                title="Back"
+            >
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+
+
+            <div class="chat-user">
+
+                <div class="chat-avatar">
+
+                    <i class="fa-solid fa-user"></i>
+
+                    <span class="online-dot"></span>
+
+                </div>
+
+
+                <div class="chat-user-info">
+
+                    <h3 id="chatUsername">
+                        Select a friend
+                    </h3>
+
+                    <small id="chatStatus">
+                        Offline
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="header-actions">
+
+                <button
+                    class="header-btn"
+                    title="Call"
+                >
+                    <i class="fa-solid fa-phone"></i>
+                </button>
+
+                <button
+                    class="header-btn"
+                    title="Video Call"
+                >
+                    <i class="fa-solid fa-video"></i>
+                </button>
+
+                <button
+                    class="header-btn"
+                    title="More"
+                >
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- MESSAGES -->
+
+        <div
+            class="messages"
+            id="messages"
+        >
+
+            <div class="empty-chat">
+
+                <div class="empty-chat-icon">
+
+                    <i class="fa-regular fa-comments"></i>
+
+                </div>
+
+                <h2>
+                    No conversation selected
+                </h2>
+
+                <p>
+                    Choose a friend to start chatting
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- MESSAGE INPUT -->
+
+        <div class="chat-input">
+
+            <button
+                class="icon-btn"
+                id="emojiButton"
+                title="Emoji"
+            >
+                <i class="fa-regular fa-face-smile"></i>
+            </button>
+
+
+            <input
+                type="text"
+                id="messageInput"
+                placeholder="Type a message..."
+                autocomplete="off"
+                disabled
+            >
+
+
+            <button
+                class="icon-btn"
+                id="attachButton"
+                title="Attach file"
+            >
+                <i class="fa-solid fa-paperclip"></i>
+            </button>
+
+
+            <button
+                class="send-btn"
+                id="sendButton"
+                title="Send"
+                disabled
+            >
+                <i class="fa-solid fa-paper-plane"></i>
+            </button>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================== -->
+
+<script>
+
+/* =========================================================
+   LOGIN CHECK
+========================================================= */
+
+const token = localStorage.getItem("token");
+const savedUser = localStorage.getItem("user");
+
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const loggedOut =
+    document.getElementById("loggedOutAccount");
+
+const loggedIn =
+    document.getElementById("loggedInAccount");
+
+const usernameDisplay =
+    document.getElementById("usernameDisplay");
+
+const logoutButton =
+    document.getElementById("logoutButton");
+
+const settingsUsername =
+    document.getElementById("settingsUsername");
+
+const chatList =
+    document.getElementById("chatList");
+
+const chatWindow =
+    document.getElementById("chatWindow");
+
+const mobileBackBtn =
+    document.getElementById("mobileBackBtn");
+
+
+/* =========================================================
+   SHOW ACCOUNT
+========================================================= */
+
+let currentUser = null;
+
+if (token && savedUser) {
+
+    try {
+
+        currentUser = JSON.parse(savedUser);
+
+        loggedOut.style.display = "none";
+        loggedIn.style.display = "flex";
+
+        const username =
+            currentUser.username || "User";
+
+        usernameDisplay.textContent = username;
+        settingsUsername.textContent = username;
+
+    } catch (error) {
+
+        console.error(
+            "Invalid saved user:",
+            error
+        );
+
+        localStorage.removeItem("user");
+
+    }
+
+}
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+function logoutUser() {
+
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+
+    window.location.href = "login.html";
+
+}
+
+
+if (logoutButton) {
+
+    logoutButton.addEventListener(
+        "click",
+        logoutUser
+    );
+
+}
+
+
+const logoutSettingsBtn =
+    document.getElementById("logoutSettingsBtn");
+
+if (logoutSettingsBtn) {
+
+    logoutSettingsBtn.addEventListener(
+        "click",
+        logoutUser
+    );
+
+}
+
+
+/* =========================================================
+   SCREEN ELEMENTS
+========================================================= */
+
+const screens = {
+
+    chats:
+        document.getElementById("chatsScreen"),
+
+    friends:
+        document.getElementById("friendsScreen"),
+
+    groups:
+        document.getElementById("groupsScreen"),
+
+    settings:
+        document.getElementById("settingsScreen")
+
+};
+
+
+/* =========================================================
+   SIDEBAR NAVIGATION
+========================================================= */
+
+const menuItems =
+    document.querySelectorAll(".menu li");
+
+function showScreen(screenName) {
+
+    Object.values(screens).forEach(
+        screen => {
+
+            if (screen) {
+
+                screen.classList.add(
+                    "hidden-screen"
+                );
+
+            }
+
+        }
+    );
+
+
+    if (screens[screenName]) {
+
+        screens[screenName].classList.remove(
+            "hidden-screen"
+        );
+
+    }
+
+
+    menuItems.forEach(item => {
+
+        item.classList.remove("active");
+
+        if (
+            item.dataset.screen === screenName
+        ) {
+
+            item.classList.add("active");
+
+        }
+
+    });
+
+
+    /*
+        On desktop, the chat window remains visible
+        for Chats.
+
+        On Friends / Groups / Settings,
+        the right side remains available but the
+        panel changes.
+    */
+
+}
+
+
+menuItems.forEach(item => {
+
+    item.addEventListener(
+        "click",
+        () => {
+
+            const screen =
+                item.dataset.screen;
+
+            showScreen(screen);
+
+        }
+    );
+
+});
+
+
+/* =========================================================
+   CHAT SEARCH
+========================================================= */
+
+const addFriendBtn =
+    document.getElementById("addFriendBtn");
+
+const newChatBtn =
+    document.getElementById("newChatBtn");
+
+const userSearch =
+    document.getElementById("userSearch");
+
+
+if (addFriendBtn) {
+
+    addFriendBtn.addEventListener(
+        "click",
+        () => {
+
+            userSearch.focus();
+
+        }
+    );
+
+}
+
+
+if (newChatBtn) {
+
+    newChatBtn.addEventListener(
+        "click",
+        () => {
+
+            userSearch.focus();
+
+        }
+    );
+
+}
+
+
+if (userSearch) {
+
+    userSearch.addEventListener(
+        "keydown",
+        event => {
+
+            if (event.key === "Enter") {
+
+                const search =
+                    userSearch.value.trim();
+
+                if (search) {
+
+                    console.log(
+                        "Searching for:",
+                        search
+                    );
+
+                }
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   FRIENDS SCREEN
+========================================================= */
+
+const addFriendScreenBtn =
+    document.getElementById(
+        "addFriendScreenBtn"
+    );
+
+const findFriendsBtn =
+    document.getElementById(
+        "findFriendsBtn"
+    );
+
+const friendSearch =
+    document.getElementById(
+        "friendSearch"
+    );
+
+
+function focusFriendSearch() {
+
+    if (friendSearch) {
+
+        friendSearch.focus();
+
+    }
+
+}
+
+
+if (addFriendScreenBtn) {
+
+    addFriendScreenBtn.addEventListener(
+        "click",
+        focusFriendSearch
+    );
+
+}
+
+
+if (findFriendsBtn) {
+
+    findFriendsBtn.addEventListener(
+        "click",
+        focusFriendSearch
+    );
+
+}
+
+
+/* FRIEND TABS */
+
+const friendTabs =
+    document.querySelectorAll(
+        ".friend-tab"
+    );
+
+friendTabs.forEach(tab => {
+
+    tab.addEventListener(
+        "click",
+        () => {
+
+            friendTabs.forEach(
+                other =>
+                    other.classList.remove(
+                        "active"
+                    )
+            );
+
+            tab.classList.add("active");
+
+            const selectedTab =
+                tab.dataset.tab;
+
+            console.log(
+                "Friends tab:",
+                selectedTab
+            );
+
+        }
+    );
+
+});
+
+
+/* =========================================================
+   GROUPS
+========================================================= */
+
+const createGroupBtn =
+    document.getElementById(
+        "createGroupBtn"
+    );
+
+const createGroupEmptyBtn =
+    document.getElementById(
+        "createGroupEmptyBtn"
+    );
+
+const groupSearch =
+    document.getElementById(
+        "groupSearch"
+    );
+
+
+function createGroup() {
+
+    const groupName =
+        prompt("Enter a group name:");
+
+    if (!groupName) {
+        return;
+    }
+
+    const groupsContent =
+        document.getElementById(
+            "groupsContent"
+        );
+
+    groupsContent.innerHTML = `
+
+        <div class="created-group">
+
+            <div class="created-group-icon">
+                <i class="fa-solid fa-users"></i>
+            </div>
+
+            <div class="created-group-info">
+
+                <strong></strong>
+
+                <small>
+                    New group
+                </small>
+
+            </div>
+
+        </div>
+
+    `;
+
+    groupsContent
+        .querySelector("strong")
+        .textContent = groupName;
+
+}
+
+
+if (createGroupBtn) {
+
+    createGroupBtn.addEventListener(
+        "click",
+        createGroup
+    );
+
+}
+
+
+if (createGroupEmptyBtn) {
+
+    createGroupEmptyBtn.addEventListener(
+        "click",
+        createGroup
+    );
+
+}
+
+
+/* =========================================================
+   SETTINGS
+========================================================= */
+
+const darkModeToggle =
+    document.getElementById(
+        "darkModeToggle"
+    );
+
+const notificationToggle =
+    document.getElementById(
+        "notificationToggle"
+    );
+
+
+/* DARK MODE */
+
+if (darkModeToggle) {
+
+    darkModeToggle.addEventListener(
+        "change",
+        () => {
+
+            document.body.classList.toggle(
+                "light-mode",
+                !darkModeToggle.checked
+            );
+
+            localStorage.setItem(
+                "darkMode",
+                darkModeToggle.checked
+            );
+
+        }
+    );
+
+}
+
+
+const savedDarkMode =
+    localStorage.getItem("darkMode");
+
+if (savedDarkMode !== null) {
+
+    const enabled =
+        savedDarkMode === "true";
+
+    darkModeToggle.checked = enabled;
+
+    document.body.classList.toggle(
+        "light-mode",
+        !enabled
+    );
+
+}
+
+
+/* NOTIFICATIONS */
+
+if (notificationToggle) {
+
+    notificationToggle.addEventListener(
+        "change",
+        () => {
+
+            localStorage.setItem(
+                "notifications",
+                notificationToggle.checked
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   MESSAGE INPUT
+========================================================= */
+
+const messageInput =
+    document.getElementById(
+        "messageInput"
+    );
+
+const sendButton =
+    document.getElementById(
+        "sendButton"
+    );
+
+
+messageInput.addEventListener(
+    "input",
+    () => {
+
+        sendButton.disabled =
+            messageInput.value.trim() === "";
+
+    }
+);
+
+
+/* =========================================================
+   SEND MESSAGE
+========================================================= */
+
+sendButton.addEventListener(
+    "click",
+    () => {
+
+        const message =
+            messageInput.value.trim();
+
+        if (!message) {
+            return;
+        }
+
+        console.log(
+            "Message:",
+            message
+        );
+
+        messageInput.value = "";
+
+        sendButton.disabled = true;
+
+    }
+);
+
+
+/* =========================================================
+   ENTER TO SEND
+========================================================= */
+
+messageInput.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key === "Enter" &&
+            !event.shiftKey
+        ) {
+
+            event.preventDefault();
+
+            if (!sendButton.disabled) {
+
+                sendButton.click();
+
+            }
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   MOBILE CHAT NAVIGATION
+========================================================= */
+
+function openMobileChat() {
+
+    if (window.innerWidth <= 700) {
+
+        chatList.classList.add(
+            "mobile-hidden"
+        );
+
+        chatWindow.classList.add(
+            "mobile-active"
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE BACK
+========================================================= */
+
+if (mobileBackBtn) {
+
+    mobileBackBtn.addEventListener(
+        "click",
+        () => {
+
+            chatWindow.classList.remove(
+                "mobile-active"
+            );
+
+            chatList.classList.remove(
+                "mobile-hidden"
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   FRIEND CLICK SUPPORT
+========================================================= */
+
+document.addEventListener(
+    "click",
+    event => {
+
+        const person =
+            event.target.closest(".person");
+
+        if (!person) {
+            return;
+        }
+
+        openMobileChat();
+
+    }
+);
+
+
+/* =========================================================
+   RESIZE FIX
+========================================================= */
+
+window.addEventListener(
+    "resize",
+    () => {
+
+        if (window.innerWidth > 700) {
+
+            chatList.classList.remove(
+                "mobile-hidden"
+            );
+
+            chatWindow.classList.remove(
+                "mobile-active"
+            );
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>
